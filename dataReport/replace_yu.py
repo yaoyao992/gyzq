@@ -29,7 +29,7 @@ def  replace_SZ_radio(yxn_xlsx,xone_xls,yuegao_xls):
     
 
  
-    print("ok")
+    ##print("ok")
 
 
 
