@@ -1,10 +1,11 @@
 import pandas as pd  
-import dbfread 
+#import dbfread 
 import dbf 
-import xlrd
-import openpyxl
-import filetype
+#import xlrd
+#import openpyxl
+#import filetype
 from dbfpy3 import dbf
+import sys 
 
 def  replace_SZ_radio(yuegaoxls_path,dbf_path): 
     # 读取Excel文件  
@@ -30,10 +31,10 @@ def  replace_SZ_radio(yuegaoxls_path,dbf_path):
             if id in  replace_dict:
                 replacements = replace_dict[id]                
 
-                if record[b'LYBZBL'] <= record[b'PCX']:
+                if replacements['ratio']*100 < record[b'PCX']:
                     print('yao')
                     record[b'LYBZJB'] = '2'    
-                elif record[b'LYBZBL'] >= record[b'YJX']:        
+                elif replacements['ratio']*100 >= record[b'YJX']:        
                     record[b'LYBZJB'] = '0'
                 else:   
                     record[b'LYBZJB'] = '1'   
@@ -45,6 +46,18 @@ def  replace_SZ_radio(yuegaoxls_path,dbf_path):
 
   
 
+def main():
+    if len(sys.argv) > 1:
+        ygfile = sys.argv[1]
+        zyhg=sys.argv[2] 
+        
+           
+    else:
+        print("参数输入错误")
+    
+    replace_SZ_radio(ygfile,zyhg)
 
-replace_SZ_radio('Y:/gpzy__20240423.xls','Y:/ZYHG0002_20240422.DBF')
+
+if __name__ == "__main__":
+    main()
 
