@@ -39,7 +39,8 @@ def  replace_SZ_radio(yuegaoxls_path,dbf_path):
                 else:   
                     record[b'LYBZJB'] = '1'   
 
-                record[b'LYBZBL'] = round(replacements['ratio']*100)    
+                #record[b'LYBZBL'] = round(replacements['ratio']*100)    
+                record[b'LYBZBL'] = float(int(replacements['ratio'] * 100))
 
             db.write(record)
 

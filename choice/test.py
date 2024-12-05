@@ -165,7 +165,7 @@ try:
         if(data.ErrorCode != 0):
             print("request cmc Error, ", data.ErrorMsg)
         else:
-            for i in range(0, len(data.Indicators)):1539
+            for i in range(0, len(data.Indicators)):
                 for j in range(0, len(data.Dates)):
                     print("indicator=%s, value=%s" % (data.Indicators[i], str(data.Data[i][j])))
 
